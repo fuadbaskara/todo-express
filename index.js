@@ -25,6 +25,10 @@ app.use(bodyParser.urlencoded({
 // parse application/json
 app.use(bodyParser.json());
 
+app.get("/", (req, res) => {
+  res.send({data: todoList});
+});
+
 app.get("/todo", (req, res) => {
   res.send({data: todoList});
 });
