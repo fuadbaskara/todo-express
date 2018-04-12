@@ -2,7 +2,7 @@ const axios = require("axios");
 const URL = "http://localhost:3000";
 
 //get ALL
-const getAll = () => {
+const getTodo = () => {
   return axios
     .get(`${URL}/todo`)
     .then(rawResponse => {
@@ -16,7 +16,7 @@ const getAll = () => {
 };
 
 //get One
-const getOne = () => {
+const getNewTodo = () => {
   return axios
     .get(`${URL}/todo/1`)
     .then(rawResponse => {
@@ -30,7 +30,7 @@ const getOne = () => {
 };
 
 //Create new todo
-const createNew = () => {
+const addNewTodo = () => {
   return axios
     .post(`${URL}/todo`, {
       todo: "New Todo",
@@ -46,9 +46,6 @@ const createNew = () => {
     });
 };
 
-getAll();
-getOne();
-createNew();
-createNew();
-getAll();
-getOne();
+getTodo();
+getNewTodo();
+addNewTodo();

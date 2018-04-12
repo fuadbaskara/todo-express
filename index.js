@@ -71,6 +71,27 @@ app.delete("/todo/:id", (req, res) => {
   }
 });
 
+app.put("/todo/:id", (req, res) => {
+  let length = todoList.length;
+  let index = req.params.id;
+  let todo = req.body.todo;
+  let done = JSON.parse(req.body.done);
+
+  if (index > length - 1) {
+    let newTodo = {
+      todo: todo,
+      done: done
+    };
+    todoList.splice(index, 1, newTodo);
+    res.send({
+      success: "change successful",
+      data: newTodo
+    });
+  } else {
+    res.send("you did it wrong");
+  }
+});
+
 app.get("/todo/search", (req, res) => {
   let search = req.query.todo;
   let result = todoList.filter(e =>
