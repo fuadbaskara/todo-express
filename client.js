@@ -1,9 +1,10 @@
 const axios = require("axios");
+const URL = "http://localhost:3000";
 
 //get ALL
 const getAll = () => {
   return axios
-    .get("http://localhost:3000/todo")
+    .get(`${URL}/todo`)
     .then(rawResponse => {
       console.log("-------------------------------------------");
       console.log("get All");
@@ -17,7 +18,7 @@ const getAll = () => {
 //get One
 const getOne = () => {
   return axios
-    .get("http://localhost:3000/todo/1")
+    .get(`${URL}/todo/1`)
     .then(rawResponse => {
       console.log("-------------------------------------------");
       console.log("get One");
@@ -31,7 +32,7 @@ const getOne = () => {
 //Create new todo
 const createNew = () => {
   return axios
-    .post("http://localhost:3000/todo", {
+    .post(`${URL}/todo`, {
       todo: "New Todo",
       done: false
     })
@@ -45,8 +46,8 @@ const createNew = () => {
     });
 };
 
-// getAll();
-// getOne();
-// createNew();
-// createNew();
-// getAll();
+getAll();
+getOne();
+createNew();
+createNew();
+getAll();

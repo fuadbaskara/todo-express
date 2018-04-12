@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 var bodyParser = require("body-parser");
 
-
+const PORT = process.env.PORT || 3000;
 
 let todoList = [{
     todo: "learn Express",
@@ -14,6 +15,8 @@ let todoList = [{
   }
 ]
 
+// using cors
+app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
   extended: false
@@ -72,5 +75,5 @@ app.get("/todo/search", (req, res) => {
   res.send({ success: true, result: result });
 });
 
-app.listen(3000, () =>
-  console.log("example app running on port 3000"));
+app.listen(PORT, () =>
+  console.log(`example app running on port ${PORT}`));
