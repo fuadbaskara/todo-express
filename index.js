@@ -12,6 +12,18 @@ let todoList = [{
   {
     todo: "learn React",
     done: false
+  },
+  {
+    todo: "learn Database",
+    done: false
+  },
+  {
+    todo: "Final Project",
+    done: false
+  },
+  {
+    todo: "Final Project 2",
+    done: false
   }
 ]
 
@@ -27,6 +39,14 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send({data: todoList});
+});
+
+app.get("/todo/search", (req, res) => {
+  let search = req.query.todo;
+  let result = todoList.filter(e =>
+    e.todo.toLowerCase().includes(search.toLowerCase())
+  );
+  res.send({ success: true, result: result });
 });
 
 app.get("/todo", (req, res) => {
@@ -90,14 +110,6 @@ app.put("/todo/:id", (req, res) => {
   } else {
     res.send("you did it wrong");
   }
-});
-
-app.get("/todo/search", (req, res) => {
-  let search = req.query.todo;
-  let result = todoList.filter(e =>
-    e.todo.toLowerCase().includes(search.toLowerCase())
-  );
-  res.send({ success: true, result: result });
 });
 
 app.listen(PORT, () =>
