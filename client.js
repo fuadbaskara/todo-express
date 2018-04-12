@@ -51,3 +51,4 @@ getOne();
 createNew();
 createNew();
 getAll();
+getOne();
